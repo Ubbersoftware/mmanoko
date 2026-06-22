@@ -953,7 +953,7 @@
         <p>The home has just been <strong>repainted throughout</strong> and is tiled from end to end. A central passage
           links the <strong>two bedrooms</strong> — the master fitted with built-in wardrobes — to the <strong>fitted
             kitchen</strong>, living room, family bathroom with a tub and a separate WC.</p>
-        <p>Outside, the plot is <strong>fully walled and secure</strong>, with a borehole water point, an electric
+        <p>Outside, the plot is <strong>fully walled and secure</strong>, with a WUC water supply, an electric
           geyser for hot water, and plenty of room to come and go in the shade of the acacia.</p>
       </div>
       <aside class="features">
@@ -971,9 +971,20 @@
           <p class="eyebrow">Photo tour</p>
           <h2 class="serif">Take a look inside &amp; out</h2>
         </div>
-        <div class="filters" id="filters"></div>
       </div>
       <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO TOUR ============ -->
+  <section class="pad" id="video" style="padding-top:0">
+    <div class="wrap">
+      <div class="video-block">
+        <video controls poster="media/1.jpeg" style="width:100%;border-radius:var(--radius);box-shadow:var(--shadow);">
+          <source src="media/tour.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   </section>
 
@@ -993,7 +1004,7 @@
           <a href="tel:+26771891393"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
-            </svg>+267 71891393</a>
+            </svg>+267 71234112</a>
         </div>
       </div>
     </div>
@@ -1033,42 +1044,17 @@
       "Tiled floors throughout",
       "Burglar bars on all windows",
       "Fully walled, secure plot",
-      "Borehole water point",
+      "WUC water supply",
       "Mature acacia shade trees"
     ];
 
-    // size: big / tall / wide / std  — arranged for editorial rhythm
+    // 5 photos from media/ folder — sizes chosen for editorial rhythm
     var PHOTOS = [
-      { src: "media/ext-portrait.jpg", cat: "exterior", tag: "Exterior", cap: "The roundhouse — green tiled roof &amp; cream walls", size: "big" },
-      { src: "media/ext-front.jpg", cat: "exterior", tag: "Exterior", cap: "Front entrance &amp; security gate", size: "tall" },
-      { src: "media/ext-side-trees.jpg", cat: "exterior", tag: "Exterior", cap: "Eastern elevation under the thorn trees", size: "wide" },
-      { src: "media/ext-entrance.jpg", cat: "exterior", tag: "Exterior", cap: "Covered side entrance", size: "std" },
-      { src: "media/living-curved.jpg", cat: "living", tag: "Living", cap: "Living room — curved feature wall &amp; twin windows", size: "wide" },
-      { src: "media/living-open.jpg", cat: "living", tag: "Living", cap: "Open living area &amp; central passage", size: "std" },
-      { src: "media/hall.jpg", cat: "living", tag: "Interior", cap: "Central passage to the front door", size: "std" },
-      { src: "media/shelves.jpg", cat: "living", tag: "Interior", cap: "Built-in storage shelving", size: "std" },
-      { src: "media/kitchen-main.jpg", cat: "kitchen", tag: "Kitchen", cap: "Fitted kitchen with generous cupboards", size: "big" },
-      { src: "media/kitchen-sink.jpg", cat: "kitchen", tag: "Kitchen", cap: "Kitchen with door to the yard", size: "tall" },
-      { src: "media/kitchen-window.jpg", cat: "kitchen", tag: "Kitchen", cap: "Kitchen — north-facing window &amp; mains board", size: "std" },
-      { src: "media/bed-master.jpg", cat: "bedroom", tag: "Bedroom", cap: "Master bedroom — four-door built-in closet", size: "wide" },
-      { src: "media/bed-master-2.jpg", cat: "bedroom", tag: "Bedroom", cap: "Master bedroom &amp; wardrobe", size: "std" },
-      { src: "media/bed-curved.jpg", cat: "bedroom", tag: "Bedroom", cap: "Second bedroom with curved wall", size: "std" },
-      { src: "media/bed-corner.jpg", cat: "bedroom", tag: "Bedroom", cap: "Bedroom — built-in robes &amp; drawers", size: "std" },
-      { src: "media/bath-tub.jpg", cat: "bathroom", tag: "Bathroom", cap: "Family bathroom with tiled tub", size: "tall" },
-      { src: "media/wc.jpg", cat: "bathroom", tag: "Bathroom", cap: "Separate WC &amp; hand basin", size: "std" },
-      { src: "media/yard-borehole.jpg", cat: "grounds", tag: "Grounds", cap: "Walled yard with borehole water point", size: "wide" },
-      { src: "media/perimeter-wall.jpg", cat: "grounds", tag: "Grounds", cap: "Secure plastered perimeter wall", size: "std" },
-      { src: "media/geyser.jpg", cat: "grounds", tag: "Grounds", cap: "Electric geyser — hot water on tap", size: "std" }
-    ];
-
-    var FILTERS = [
-      { key: "all", label: "All" },
-      { key: "exterior", label: "Exterior" },
-      { key: "living", label: "Living" },
-      { key: "kitchen", label: "Kitchen" },
-      { key: "bedroom", label: "Bedrooms" },
-      { key: "bathroom", label: "Bathroom" },
-      { key: "grounds", label: "Grounds" }
+      { src: "media/1.jpeg", tag: "Photo 1", cap: "Image 1", size: "big" },
+      { src: "media/2.jpeg", tag: "Photo 2", cap: "Image 2", size: "tall" },
+      { src: "media/3.jpeg", tag: "Photo 3", cap: "Image 3", size: "wide" },
+      { src: "media/4.jpeg", tag: "Photo 4", cap: "Image 4", size: "std" },
+      { src: "media/5.jpeg", tag: "Photo 5", cap: "Image 5", size: "std" }
     ];
 
     /* ---------- render features ---------- */
@@ -1076,19 +1062,12 @@
     document.getElementById("featList").innerHTML =
       FEATURES.map(function (f) { return "<li>" + check + "<span>" + f + "</span></li>"; }).join("");
 
-    /* ---------- render filters ---------- */
-    var filtersEl = document.getElementById("filters");
-    filtersEl.innerHTML = FILTERS.map(function (f, i) {
-      return '<button class="filter' + (i === 0 ? ' active' : '') + '" data-key="' + f.key + '">' + f.label + '</button>';
-    }).join("");
-
     /* ---------- render grid ---------- */
     var grid = document.getElementById("grid");
-    var current = [];   // currently visible photo objects (for lightbox nav)
+    var current = PHOTOS.slice();   // all photos for lightbox nav
 
-    function renderGrid(key) {
-      var items = PHOTOS.filter(function (p) { return key === "all" || p.cat === key; });
-      current = items;
+    function renderGrid() {
+      var items = PHOTOS;
       grid.innerHTML = items.map(function (p, idx) {
         return '<figure class="tile ' + p.size + '" data-idx="' + idx + '">' +
           '<span class="tag">' + p.tag + '</span>' +
@@ -1097,14 +1076,7 @@
           '</figure>';
       }).join("");
     }
-    renderGrid("all");
-
-    filtersEl.addEventListener("click", function (e) {
-      var b = e.target.closest(".filter"); if (!b) return;
-      [].forEach.call(filtersEl.children, function (c) { c.classList.remove("active"); });
-      b.classList.add("active");
-      renderGrid(b.dataset.key);
-    });
+    renderGrid();
 
     /* ---------- lightbox ---------- */
     var lb = document.getElementById("lightbox");
