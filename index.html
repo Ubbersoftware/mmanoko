@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roundhouse for Rent · Mmanoko</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bone: oklch(0.971 0.008 85);
+      --bone-2: oklch(0.945 0.011 84);
+      --card: oklch(0.99 0.006 85);
+      --ink: oklch(0.27 0.012 60);
+      --ink-soft: oklch(0.46 0.014 62);
+      --line: oklch(0.88 0.012 80);
+      --green: oklch(0.43 0.055 150);
+      --green-deep: oklch(0.36 0.05 152);
+      --clay: oklch(0.56 0.088 48);
+      --clay-soft: oklch(0.93 0.02 60);
+      --shadow: 0 1px 2px oklch(0.3 0.02 60 / .05), 0 8px 30px oklch(0.3 0.02 60 / .08);
+      --radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bone);
+      color: var(--ink);
+      font-family: "Work Sans", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(1180px, 92vw);
+      margin-inline: auto;
+    }
+
+    .serif {
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    .eyebrow {
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--clay);
+    }
+
+    /* ---------- header ---------- */
+    header.site {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: oklch(0.971 0.008 85 / .82);
+      backdrop-filter: saturate(1.4) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      font-size: .82rem;
+      text-transform: uppercase;
+    }
+
+    .brand .dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 120%, var(--green) 0 58%, transparent 60%),
+        var(--clay-soft);
+      border: 1px solid var(--line);
+      flex: none;
+    }
+
+    .brand small {
+      color: var(--ink-soft);
+      font-weight: 500;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+
+    .head-right {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .head-price {
+      text-align: right;
+      line-height: 1.15;
+    }
+
+    .head-price b {
+      font-weight: 600;
+    }
+
+    .head-price span {
+      display: block;
+      font-size: .72rem;
+      color: var(--ink-soft);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font: inherit;
+      font-weight: 600;
+      font-size: .86rem;
+      padding: .62rem 1.15rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s ease, background .2s ease, color .2s ease;
+    }
+
+    .btn-solid {
+      background: var(--green);
+      color: var(--bone);
+    }
+
+    .btn-solid:hover {
+      background: var(--green-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .btn-light {
+      background: var(--bone);
+      color: var(--ink);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url("media/hero-acacia.jpg") center 42%/cover no-repeat;
+    }
+
+    .hero-img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(7deg, oklch(0.2 0.02 60 / .82) 0%, oklch(0.2 0.02 60 / .35) 34%, oklch(0.2 0.02 60 / 0) 62%);
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+      padding-block: 3rem 4.2rem;
+      color: var(--bone);
+    }
+
+    .hero .eyebrow {
+      color: oklch(0.9 0.04 70);
+    }
+
+    .hero h1 {
+      font-weight: 500;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.01em;
+      margin: .5rem 0 .1rem;
+      max-width: 16ch;
+      text-wrap: balance;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: oklch(0.92 0.05 80);
+    }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      max-width: 46ch;
+      color: oklch(0.94 0.01 85 / .92);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1.5rem 0 1.8rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: oklch(0.97 0.01 85 / .14);
+      border: 1px solid oklch(0.97 0.01 85 / .28);
+      backdrop-filter: blur(4px);
+      padding: .42rem .85rem;
+      border-radius: 100px;
+      font-size: .84rem;
+      font-weight: 500;
+    }
+
+    .chip svg {
+      width: 15px;
+      height: 15px;
+      opacity: .9;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .hero-cta .price-tag {
+      margin-left: .2rem;
+      font-size: .9rem;
+      color: oklch(0.92 0.01 85 / .85);
+    }
+
+    .hero-cta .price-tag b {
+      color: var(--bone);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- facts strip ---------- */
+    .facts {
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .facts .wrap {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .fact {
+      padding: 1.5rem 1.1rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .fact:last-child {
+      border-right: none;
+    }
+
+    .fact .k {
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .fact .v {
+      font-family: "Newsreader", serif;
+      font-size: 1.32rem;
+      margin-top: .3rem;
+      line-height: 1.2;
+    }
+
+    .fact .v small {
+      font-size: .8rem;
+      color: var(--ink-soft);
+      font-family: "Work Sans", sans-serif;
+    }
+
+    /* ---------- about ---------- */
+    section.pad {
+      padding-block: clamp(3.5rem, 8vw, 6rem);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
+    }
+
+    .about h2 {
+      font-weight: 500;
+      font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin: .6rem 0 1.3rem;
+      text-wrap: balance;
+    }
+
+    .about p {
+      color: var(--ink-soft);
+      margin-bottom: 1.1rem;
+      max-width: 60ch;
+    }
+
+    .about p strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .features {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.7rem;
+      box-shadow: var(--shadow);
+    }
+
+    .features h3 {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .features ul {
+      list-style: none;
+      columns: 1;
+    }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      padding: .46rem 0;
+      font-size: .96rem;
+      border-bottom: 1px dotted var(--line);
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features li svg {
+      width: 17px;
+      height: 17px;
+      flex: none;
+      margin-top: .2rem;
+      color: var(--green);
+    }
+
+    /* ---------- gallery ---------- */
+    .gallery-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .gallery-head h2 {
+      font-weight: 500;
+      font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+      letter-spacing: -.01em;
+      line-height: 1.05;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .filter {
+      font: inherit;
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: .4rem .9rem;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink-soft);
+      transition: all .18s ease;
+    }
+
+    .filter:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .filter.active {
+      background: var(--ink);
+      color: var(--bone);
+      border-color: var(--ink);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 8px;
+      gap: 14px;
+    }
+
+    figure.tile {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: var(--bone-2);
+      box-shadow: var(--shadow);
+    }
+
+    figure.tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    figure.tile:hover img {
+      transform: scale(1.045);
+    }
+
+    figure.tile figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 1.4rem .9rem .7rem;
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 500;
+      background: linear-gradient(transparent, oklch(0.2 0.02 60 / .72));
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    figure.tile:hover figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    figure.tile .tag {
+      position: absolute;
+      top: .6rem;
+      left: .6rem;
+      z-index: 2;
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: oklch(0.97 0.01 85 / .9);
+      color: var(--ink);
+      padding: .2rem .5rem;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    figure.tile:hover .tag {
+      opacity: 1;
+    }
+
+    /* span patterns for editorial rhythm */
+    .tile.big {
+      grid-column: span 6;
+      grid-row: span 34;
+    }
+
+    .tile.tall {
+      grid-column: span 4;
+      grid-row: span 34;
+    }
+
+    .tile.wide {
+      grid-column: span 6;
+      grid-row: span 26;
+    }
+
+    .tile.std {
+      grid-column: span 4;
+      grid-row: span 26;
+    }
+
+    /* ---------- lightbox ---------- */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: none;
+      background: oklch(0.16 0.015 60 / .94);
+      backdrop-filter: blur(6px);
+    }
+
+    .lb.open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lb-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.3rem;
+      color: oklch(0.92 0.01 85);
+      flex: none;
+    }
+
+    .lb-count {
+      font-size: .85rem;
+      letter-spacing: .05em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lb-close {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1.7rem;
+      line-height: 1;
+      padding: .2rem .5rem;
+      border-radius: 4px;
+    }
+
+    .lb-close:hover {
+      background: oklch(0.97 0.01 85 / .12);
+    }
+
+    .lb-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1rem 1rem;
+      min-height: 0;
+    }
+
+    .lb-stage img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 3px;
+      box-shadow: 0 20px 60px oklch(0 0 0 / .5);
+    }
+
+    .lb-nav {
+      flex: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: oklch(0.97 0.01 85 / .1);
+      border: 1px solid oklch(0.97 0.01 85 / .22);
+      color: oklch(0.95 0.01 85);
+      cursor: pointer;
+      font-size: 1.4rem;
+      display: grid;
+      place-items: center;
+      transition: background .18s ease;
+    }
+
+    .lb-nav:hover {
+      background: oklch(0.97 0.01 85 / .22);
+    }
+
+    .lb-cap {
+      text-align: center;
+      color: oklch(0.9 0.01 85);
+      padding: 0 1.5rem 1.3rem;
+      font-size: .9rem;
+      flex: none;
+    }
+
+    .lb-cap b {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ---------- contact ---------- */
+    .contact {
+      background: var(--green-deep);
+      color: oklch(0.95 0.02 85);
+    }
+
+    .contact .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .contact .eyebrow {
+      color: oklch(0.86 0.06 80);
+    }
+
+    .contact h2 {
+      font-weight: 500;
+      font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+      line-height: 1.08;
+      margin: .5rem 0 1rem;
+      color: #fff;
+      letter-spacing: -.01em;
+    }
+
+    .contact p {
+      color: oklch(0.9 0.02 85 / .85);
+      max-width: 42ch;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-lines {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-top: 1.4rem;
+    }
+
+    .contact-lines a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .contact-lines a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-lines svg {
+      width: 18px;
+      height: 18px;
+      opacity: .85;
+    }
+
+    form.enquire {
+      background: oklch(0.97 0.01 85 / .07);
+      border: 1px solid oklch(0.97 0.01 85 / .18);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      backdrop-filter: blur(4px);
+    }
+
+    form.enquire label {
+      display: block;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: .85rem 0 .35rem;
+      color: oklch(0.9 0.02 85 / .8);
+    }
+
+    form.enquire label:first-child {
+      margin-top: 0;
+    }
+
+    form.enquire input,
+    form.enquire textarea {
+      width: 100%;
+      font: inherit;
+      font-size: .95rem;
+      color: #fff;
+      background: oklch(0.97 0.01 85 / .08);
+      border: 1px solid oklch(0.97 0.01 85 / .22);
+      border-radius: var(--radius);
+      padding: .7rem .85rem;
+      outline: none;
+      transition: border-color .18s ease;
+    }
+
+    form.enquire input::placeholder,
+    form.enquire textarea::placeholder {
+      color: oklch(0.9 0.02 85 / .45);
+    }
+
+    form.enquire input:focus,
+    form.enquire textarea:focus {
+      border-color: oklch(0.86 0.06 80);
+    }
+
+    form.enquire textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form.enquire button {
+      margin-top: 1.1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .form-note {
+      font-size: .78rem;
+      color: oklch(0.9 0.02 85 / .7);
+      margin-top: .7rem;
+      text-align: center;
+    }
+
+    .form-ok {
+      display: none;
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-radius: var(--radius);
+      background: oklch(0.97 0.01 85 / .14);
+      border: 1px solid oklch(0.86 0.06 80 / .5);
+      font-size: .9rem;
+    }
+
+    .form-ok.show {
+      display: block;
+    }
+
+    footer.site {
+      background: var(--ink);
+      color: oklch(0.85 0.01 85);
+    }
+
+    footer.site .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: 2rem;
+      font-size: .85rem;
+    }
+
+    footer.site b {
+      color: var(--bone);
+      font-weight: 600;
+    }
+
+    footer.site .muted {
+      color: oklch(0.6 0.01 85);
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width:900px) {
+      .facts .wrap {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .fact:nth-child(3) {
+        border-right: none;
+      }
+
+      .fact:nth-child(-n+3) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .head-price {
+        display: none;
+      }
+    }
+
+    @media (max-width:680px) {
+      body {
+        font-size: 16px;
+      }
+
+      .facts .wrap {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fact {
+        border-right: none;
+      }
+
+      .fact:nth-child(odd) {
+        border-right: 1px solid var(--line);
+      }
+
+      .fact:nth-child(-n+4) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .grid {
+        grid-auto-rows: 6px;
+        gap: 10px;
+      }
+
+      .tile.big,
+      .tile.tall,
+      .tile.wide,
+      .tile.std {
+        grid-column: span 12;
+        grid-row: span 30;
+      }
+
+      .lb-nav {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Mmanoko&nbsp;Roundhouse <small>· To Let</small></span>
+      </div>
+      <div class="head-right">
+        <div class="head-price">
+          <b>BWP 2,200<span style="font-weight:400">/mo</span></b>
+          <span>Available 1 July 2026</span>
+        </div>
+        <a href="#enquire" class="btn btn-solid">Enquire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-img" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">For Rent — Mmanoko, Botswana</p>
+      <h1 class="serif">Two-bedroom <em>roundhouse</em> under the acacia</h1>
+      <p class="hero-sub">A freshly painted rondavel-style home on a walled plot in Mmanoko — tiled throughout, with a
+        generous living room, fitted kitchen and a shaded yard of its own.</p>
+      <div class="hero-stats">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5M3 12v6M21 12v6M6 18v2M18 18v2" />
+          </svg>2 Bedrooms</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM7 12V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2" />
+          </svg>1 Bathroom + WC</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 3h16v18H4zM12 3v18M8 8h.01M16 8h.01" />
+          </svg>Built-in closets</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7l-9-5Z" />
+          </svg>Walled &amp; secure</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-light">View gallery</a>
+        <a href="#enquire" class="btn btn-ghost" style="color:var(--bone);border-color:oklch(0.97 0.01 85 / .4)">Book a
+          viewing</a>
+        <span class="price-tag"><b>BWP 2,200</b> / month</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FACTS ============ -->
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact">
+        <div class="k">Monthly rent</div>
+        <div class="v">BWP 2,200</div>
+      </div>
+      <div class="fact">
+        <div class="k">Available</div>
+        <div class="v">1 Jul <small>2026</small></div>
+      </div>
+      <div class="fact">
+        <div class="k">Bedrooms</div>
+        <div class="v">2</div>
+      </div>
+      <div class="fact">
+        <div class="k">Bathroom</div>
+        <div class="v">1 <small>+ WC</small></div>
+      </div>
+      <div class="fact">
+        <div class="k">Location</div>
+        <div class="v">Mmanoko</div>
+      </div>
+      <div class="fact">
+        <div class="k">Type</div>
+        <div class="v">Roundhouse</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="pad">
+    <div class="wrap about-grid">
+      <div class="about">
+        <p class="eyebrow">About the home</p>
+        <h2 class="serif">Distinctive curves, an easy layout, and shade where it counts.</h2>
+        <p>This circular home stands out from the moment you arrive — a clean <strong>green-tiled conical roof</strong>
+          over warm cream walls, sheltered by a mature thorn-tree on its own walled plot. Inside, the rooms follow the
+          gentle curve of the building, giving the living spaces an unusually open, calm feel.</p>
+        <p>The home has just been <strong>repainted throughout</strong> and is tiled from end to end. A central passage
+          links the <strong>two bedrooms</strong> — the master fitted with built-in wardrobes — to the <strong>fitted
+            kitchen</strong>, living room, family bathroom with a tub and a separate WC.</p>
+        <p>Outside, the plot is <strong>fully walled and secure</strong>, with a borehole water point, an electric
+          geyser for hot water, and plenty of room to come and go in the shade of the acacia.</p>
+      </div>
+      <aside class="features">
+        <h3>What's included</h3>
+        <ul id="featList"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="pad" id="gallery" style="padding-top:0">
+    <div class="wrap">
+      <div class="gallery-head">
+        <div>
+          <p class="eyebrow">Photo tour</p>
+          <h2 class="serif">Take a look inside &amp; out</h2>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact pad" id="enquire">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Enquire</p>
+        <h2 class="serif">Arrange a viewing in Mmanoko</h2>
+        <p>Available from 1 July 2026 at BWP 2,200 per month. Send a message and we'll get back to you to set up a time
+          to walk through the home.</p>
+        <div class="contact-lines">
+          <a href="tel:+26771611280"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+            </svg>+267 71611280</a>
+          <a href="tel:+26771891393"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+            </svg>+267 71891393</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div><b>Mmanoko Roundhouse</b> · 2-bed home to let</div>
+      <div class="muted">BWP 2,200 / month · Available 1 July 2026 · Mmanoko, Botswana</div>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lb" id="lightbox" aria-hidden="true">
+    <div class="lb-top">
+      <span class="lb-count" id="lbCount">1 / 1</span>
+      <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="lb-stage">
+      <button class="lb-nav" id="lbPrev" aria-label="Previous">&#8249;</button>
+      <img id="lbImg" src="" alt="" />
+      <button class="lb-nav" id="lbNext" aria-label="Next">&#8250;</button>
+    </div>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+
+  <script>
+    /* ---------- data ---------- */
+    var FEATURES = [
+      "2 bedrooms — master with built-in closet",
+      "Spacious living room with curved walls",
+      "Fitted kitchen with ample cupboards",
+      "Family bathroom with bathtub",
+      "Separate WC &amp; hand basin",
+      "Built-in storage shelving",
+      "Electric geyser — hot water",
+      "Tiled floors throughout",
+      "Burglar bars on all windows",
+      "Fully walled, secure plot",
+      "Borehole water point",
+      "Mature acacia shade trees"
+    ];
+
+    // size: big / tall / wide / std  — arranged for editorial rhythm
+    var PHOTOS = [
+      { src: "media/ext-portrait.jpg", cat: "exterior", tag: "Exterior", cap: "The roundhouse — green tiled roof &amp; cream walls", size: "big" },
+      { src: "media/ext-front.jpg", cat: "exterior", tag: "Exterior", cap: "Front entrance &amp; security gate", size: "tall" },
+      { src: "media/ext-side-trees.jpg", cat: "exterior", tag: "Exterior", cap: "Eastern elevation under the thorn trees", size: "wide" },
+      { src: "media/ext-entrance.jpg", cat: "exterior", tag: "Exterior", cap: "Covered side entrance", size: "std" },
+      { src: "media/living-curved.jpg", cat: "living", tag: "Living", cap: "Living room — curved feature wall &amp; twin windows", size: "wide" },
+      { src: "media/living-open.jpg", cat: "living", tag: "Living", cap: "Open living area &amp; central passage", size: "std" },
+      { src: "media/hall.jpg", cat: "living", tag: "Interior", cap: "Central passage to the front door", size: "std" },
+      { src: "media/shelves.jpg", cat: "living", tag: "Interior", cap: "Built-in storage shelving", size: "std" },
+      { src: "media/kitchen-main.jpg", cat: "kitchen", tag: "Kitchen", cap: "Fitted kitchen with generous cupboards", size: "big" },
+      { src: "media/kitchen-sink.jpg", cat: "kitchen", tag: "Kitchen", cap: "Kitchen with door to the yard", size: "tall" },
+      { src: "media/kitchen-window.jpg", cat: "kitchen", tag: "Kitchen", cap: "Kitchen — north-facing window &amp; mains board", size: "std" },
+      { src: "media/bed-master.jpg", cat: "bedroom", tag: "Bedroom", cap: "Master bedroom — four-door built-in closet", size: "wide" },
+      { src: "media/bed-master-2.jpg", cat: "bedroom", tag: "Bedroom", cap: "Master bedroom &amp; wardrobe", size: "std" },
+      { src: "media/bed-curved.jpg", cat: "bedroom", tag: "Bedroom", cap: "Second bedroom with curved wall", size: "std" },
+      { src: "media/bed-corner.jpg", cat: "bedroom", tag: "Bedroom", cap: "Bedroom — built-in robes &amp; drawers", size: "std" },
+      { src: "media/bath-tub.jpg", cat: "bathroom", tag: "Bathroom", cap: "Family bathroom with tiled tub", size: "tall" },
+      { src: "media/wc.jpg", cat: "bathroom", tag: "Bathroom", cap: "Separate WC &amp; hand basin", size: "std" },
+      { src: "media/yard-borehole.jpg", cat: "grounds", tag: "Grounds", cap: "Walled yard with borehole water point", size: "wide" },
+      { src: "media/perimeter-wall.jpg", cat: "grounds", tag: "Grounds", cap: "Secure plastered perimeter wall", size: "std" },
+      { src: "media/geyser.jpg", cat: "grounds", tag: "Grounds", cap: "Electric geyser — hot water on tap", size: "std" }
+    ];
+
+    var FILTERS = [
+      { key: "all", label: "All" },
+      { key: "exterior", label: "Exterior" },
+      { key: "living", label: "Living" },
+      { key: "kitchen", label: "Kitchen" },
+      { key: "bedroom", label: "Bedrooms" },
+      { key: "bathroom", label: "Bathroom" },
+      { key: "grounds", label: "Grounds" }
+    ];
+
+    /* ---------- render features ---------- */
+    var check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>';
+    document.getElementById("featList").innerHTML =
+      FEATURES.map(function (f) { return "<li>" + check + "<span>" + f + "</span></li>"; }).join("");
+
+    /* ---------- render filters ---------- */
+    var filtersEl = document.getElementById("filters");
+    filtersEl.innerHTML = FILTERS.map(function (f, i) {
+      return '<button class="filter' + (i === 0 ? ' active' : '') + '" data-key="' + f.key + '">' + f.label + '</button>';
+    }).join("");
+
+    /* ---------- render grid ---------- */
+    var grid = document.getElementById("grid");
+    var current = [];   // currently visible photo objects (for lightbox nav)
+
+    function renderGrid(key) {
+      var items = PHOTOS.filter(function (p) { return key === "all" || p.cat === key; });
+      current = items;
+      grid.innerHTML = items.map(function (p, idx) {
+        return '<figure class="tile ' + p.size + '" data-idx="' + idx + '">' +
+          '<span class="tag">' + p.tag + '</span>' +
+          '<img loading="lazy" src="' + p.src + '" alt="' + p.cap.replace(/&amp;/g, "&") + '">' +
+          '<figcaption>' + p.cap + '</figcaption>' +
+          '</figure>';
+      }).join("");
+    }
+    renderGrid("all");
+
+    filtersEl.addEventListener("click", function (e) {
+      var b = e.target.closest(".filter"); if (!b) return;
+      [].forEach.call(filtersEl.children, function (c) { c.classList.remove("active"); });
+      b.classList.add("active");
+      renderGrid(b.dataset.key);
+    });
+
+    /* ---------- lightbox ---------- */
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lbImg");
+    var lbCap = document.getElementById("lbCap");
+    var lbCount = document.getElementById("lbCount");
+    var pos = 0;
+
+    function openLB(idx) {
+      pos = idx; updateLB(); lb.classList.add("open"); lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLB() {
+      lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function updateLB() {
+      var p = current[pos];
+      lbImg.src = p.src;
+      lbImg.alt = p.cap.replace(/&amp;/g, "&");
+      lbCap.innerHTML = "<b>" + p.tag + "</b> &nbsp;·&nbsp; " + p.cap;
+      lbCount.textContent = (pos + 1) + " / " + current.length;
+    }
+    function step(d) { pos = (pos + d + current.length) % current.length; updateLB(); }
+
+    grid.addEventListener("click", function (e) {
+      var fig = e.target.closest(".tile"); if (!fig) return;
+      openLB(parseInt(fig.dataset.idx, 10));
+    });
+    document.getElementById("lbClose").addEventListener("click", closeLB);
+    document.getElementById("lbPrev").addEventListener("click", function () { step(-1); });
+    document.getElementById("lbNext").addEventListener("click", function () { step(1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-stage")) closeLB(); });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLB();
+      else if (e.key === "ArrowLeft") step(-1);
+      else if (e.key === "ArrowRight") step(1);
+    });
+
+  </script>
+</body>
+
+</html>
